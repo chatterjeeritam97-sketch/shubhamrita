@@ -24,22 +24,44 @@ function App() {
     music.loop = true
     music.volume = 0.45
 
+    const pauseMusic = () => music.pause()
+
     const removeResumeListeners = () => {
       document.removeEventListener('pointerdown', startMusic)
       document.removeEventListener('keydown', startMusic)
     }
     const startMusic = () => {
-      void music.play().then(removeResumeListeners).catch(() => {
+      if (document.visibilityState !== 'visible') return
+
+      void music.play().then(() => {
+        removeResumeListeners()
+      }).catch(() => {
         // Autoplay can be blocked until the visitor interacts with the page.
       })
     }
 
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        pauseMusic()
+      } else {
+        startMusic()
+      }
+    }
+
+    const handleWindowFocus = startMusic
+
     document.addEventListener('pointerdown', startMusic)
     document.addEventListener('keydown', startMusic)
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    window.addEventListener('blur', pauseMusic)
+    window.addEventListener('focus', handleWindowFocus)
     startMusic()
 
     return () => {
       removeResumeListeners()
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+      window.removeEventListener('blur', pauseMusic)
+      window.removeEventListener('focus', handleWindowFocus)
       music.pause()
       music.currentTime = 0
     }
