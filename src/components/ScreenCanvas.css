@@ -257,8 +257,9 @@
 
   .travel-postcard-stamp {
     left: 35%;
-    top: 19%;
-    width: 30%;
+    top: auto;
+    bottom: -32%;
+    width: min(30%, 40svh);
   }
 
   .travel-card {
