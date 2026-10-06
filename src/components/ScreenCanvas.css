@@ -280,7 +280,8 @@
 
   .invitation-person--female {
     left: 1%;
-    height: 92%;
+    width: 63%;
+    height: 100%;
   }
 
   .invitation-butterfly-frame {

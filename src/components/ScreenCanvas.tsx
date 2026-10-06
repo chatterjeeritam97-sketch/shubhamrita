@@ -67,15 +67,18 @@ function InvitationScene({ active }: { active: boolean }) {
     const reduceMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches
+    const phoneLayout = window.matchMedia('(max-width: 640px)').matches
+    const hugOverlap = stage.clientWidth * (phoneLayout ? 0.025 : 0.12)
+    const hugLean = phoneLayout ? 0.5 : 1.5
 
     const context = gsap.context(() => {
       if (reduceMotion) {
         gsap.set(male, { autoAlpha: 1, x: 0, y: 0, rotation: 0 })
         gsap.set(female, {
           autoAlpha: 1,
-          x: -stage.clientWidth * 0.12,
+          x: -hugOverlap,
           y: 0,
-          rotation: -1.5,
+          rotation: -hugLean,
         })
         gsap.set(inviteFrame, { autoAlpha: 1, scale: 1, x: 0 })
         return
@@ -102,12 +105,11 @@ function InvitationScene({ active }: { active: boolean }) {
           onUpdate: () => {
             const progress = walking.progress
             const step = Math.sin(progress * Math.PI * 12)
-            const hugOverlap = stage.clientWidth * 0.12
             gsap.set(female, {
               autoAlpha: Math.min(1, progress * 5),
               x: stage.clientWidth * 0.68 * (1 - progress) - hugOverlap * progress,
               y: Math.abs(step) * (1 - progress) * 4,
-              rotation: step * (1 - progress) * 0.8 - progress * 1.5,
+              rotation: step * (1 - progress) * 0.8 - progress * hugLean,
             })
           },
         },
