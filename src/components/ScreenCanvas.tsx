@@ -243,6 +243,8 @@ function TravelCollage({ active }: { active: boolean }) {
     const reduceMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches
+    const phoneLayout = window.matchMedia('(max-width: 640px)').matches
+    const postcardEnterScale = phoneLayout ? 1.2 : 2.2
 
     const context = gsap.context(() => {
       if (reduceMotion) {
@@ -262,7 +264,7 @@ function TravelCollage({ active }: { active: boolean }) {
       gsap.set(cards, { autoAlpha: 0 })
       gsap.set(postcard, {
         autoAlpha: 0,
-        scale: 2.2,
+        scale: postcardEnterScale,
         x: -12,
         y: -18,
         rotation: 13,

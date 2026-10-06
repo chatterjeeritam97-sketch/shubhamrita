@@ -255,6 +255,12 @@
     inset: 9% 2% 34%;
   }
 
+  .travel-postcard-stamp {
+    left: 35%;
+    top: 19%;
+    width: 30%;
+  }
+
   .travel-card {
     padding: 3px;
   }
