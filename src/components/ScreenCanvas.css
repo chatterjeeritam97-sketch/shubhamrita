@@ -263,7 +263,8 @@
   }
 
   .travel-card {
-    padding: 3px;
+    padding: 0;
+    scale: 1.12;
   }
 
   .travel-portrait {
