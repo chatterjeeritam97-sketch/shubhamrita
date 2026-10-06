@@ -200,9 +200,9 @@ function InvitationScene({ active }: { active: boolean }) {
         className="invitation-detail-frame"
         aria-label="Invitation details"
       >
-        <p>স্থান: ভূতের রাজা দিলো বোর</p>
+        <p>স্থান: ভূতের রাজা দিলো বর</p>
         <p>সময়ঃ দুপুর ১২টা</p>
-        <p>সাজসজ্জা: সবেকি</p>
+        <p>সাজসজ্জা: সাবেকি</p>
         <p className="invitation-welcome">নতুন দম্পতি আমন্ত্রিত</p>
         <a href={MAP_LINK} target="_blank" rel="noreferrer">
           মানচিত্র <span aria-hidden="true">↗</span>
