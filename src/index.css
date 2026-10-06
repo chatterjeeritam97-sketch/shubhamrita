@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "ShubhamritaBengali";
+  src: url("./assets/fonts/ShubhamritaBengali.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-width: 320px;
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  background: #f3eadc;
+  overscroll-behavior: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 640px) {
+  .invitation-detail-frame {
+    max-height: min(42%, 16rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+@media (max-width: 900px) and (max-height: 500px) {
+  .pin-rig--left {
+    height: min(28%, 155px);
+  }
+
+  .pin-rig--right {
+    height: min(30%, 165px);
+  }
+
+  .invitation-detail-frame {
+    bottom: 5%;
+    padding-block: 8px;
+  }
+
+  .invitation-detail-frame p {
+    margin-bottom: 2px;
+    font-size: clamp(12px, 2.8vh, 16px);
+  }
+}
+
+.start-line {
+  color: #2a090e;
+  -webkit-text-stroke: 0.55px #2a090e;
+  paint-order: stroke fill;
+}
+
+.type-caret {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.92em;
+  margin-left: 0.14em;
+  background: currentColor;
+  vertical-align: -0.06em;
+  animation: type-caret 1s steps(1) infinite;
+}
+
+@keyframes type-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .type-caret {
+    animation: none;
+  }
+}

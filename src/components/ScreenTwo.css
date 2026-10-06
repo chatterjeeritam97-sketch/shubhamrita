@@ -1,0 +1,231 @@
+.pin-stage {
+  position: absolute;
+  inset: 0;
+  container-type: inline-size;
+  z-index: 1;
+}
+
+.pin-rig {
+  position: absolute;
+  bottom: 2%;
+}
+
+.pin-rig--left {
+  left: 3%;
+  height: min(36%, 220px);
+  aspect-ratio: 157 / 301;
+}
+
+.pin-rig--right {
+  right: 2%;
+  height: min(38%, 236px);
+  aspect-ratio: 112 / 314;
+}
+
+.pin-stick,
+.pin-wheel {
+  position: absolute;
+  user-select: none;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.pin-stick {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pin-wheel {
+  width: min(18cqi, 108px);
+  height: auto;
+}
+
+.pin-rig--left .pin-wheel {
+  left: 96.815%;
+  top: 1.661%;
+}
+
+.pin-rig--right .pin-wheel {
+  left: 4.464%;
+  top: 1.592%;
+}
+
+.character-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.character-art {
+  position: absolute;
+  bottom: 12%;
+  width: 38%;
+  height: 54%;
+  object-fit: contain;
+  object-position: center bottom;
+  visibility: hidden;
+}
+
+.character-art--bride {
+  right: 8%;
+}
+
+.character-art--groom {
+  left: 8%;
+}
+
+.match-button {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 96px;
+  height: 44px;
+  margin-left: -48px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  border: 4px solid #000;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #ffe66b 0%, #ffd12e 55%, #f7b91c 100%);
+  color: #55390b;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  font-size: 18px;
+  font-weight: 900;
+  -webkit-text-stroke: 0.3px currentColor;
+  letter-spacing: 0;
+  pointer-events: auto;
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.match-button:active {
+  background: #f7b91c;
+}
+
+.match-button--vibrate {
+  animation: match-button-vibrate 2.4s ease-in-out infinite;
+}
+
+@keyframes match-button-vibrate {
+  0%,
+  30%,
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+
+  3%,
+  15%,
+  27% {
+    translate: -2px 0;
+    rotate: -2deg;
+  }
+
+  6%,
+  18%,
+  24% {
+    translate: 2px 0;
+    rotate: 2deg;
+  }
+
+  9%,
+  21% {
+    translate: -1px 0;
+    rotate: -1deg;
+  }
+}
+
+.match-button:focus-visible {
+  outline: 2px solid #4e3210;
+  outline-offset: 3px;
+}
+
+.bee-trail-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.bee-trail {
+  fill: none;
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 32 16;
+  filter: drop-shadow(0 1px 1px rgba(58, 38, 11, 0.32));
+  visibility: hidden;
+}
+
+.bee-trail--one {
+  stroke: #9873d0;
+}
+
+.bee-trail--two {
+  stroke: #41b98c;
+}
+
+.bee-flight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  width: 30px;
+  height: auto;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.confetti-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.confetti-burst {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -4px;
+  left: -2px;
+  width: 5px;
+  height: 9px;
+  border-radius: 1px;
+  will-change: transform, opacity;
+}
+
+@media (max-width: 640px) {
+  .character-art {
+    bottom: 14%;
+    width: 43%;
+    height: 43%;
+  }
+
+  .character-art--bride {
+    right: 1%;
+  }
+
+  .character-art--groom {
+    left: 1%;
+  }
+
+  .bee-flight {
+    width: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .match-button--vibrate {
+    animation: none;
+  }
+}
